@@ -20,10 +20,13 @@ public abstract class Person {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
+
     @Column(name = "first_name")
     protected String firstName;
+
     @Column(name = "last_name")
     protected String lastName;
+
     protected int age;
 
     public Person() {

@@ -3,7 +3,10 @@ package com.mishura.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -13,6 +16,9 @@ import javax.persistence.*;
 @Entity
 public class Teacher extends Person{
 
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    //@JoinColumn(name = "subject_name")
     private Subject subject;
 
     public Teacher() {

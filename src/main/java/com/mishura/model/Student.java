@@ -18,10 +18,14 @@ public class Student extends Person{
     @Column(name = "date_of_entrance")
     private LocalDateTime dateOfEntrance;
 
-    @Transient
+    @ManyToOne
+    @JoinColumn(name = "group_id")
     private Group group;
 
-    @Transient
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "student_grade",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "grade_id"))
     private Set<Grade> grades;
 
     public Student(){

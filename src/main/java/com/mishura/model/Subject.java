@@ -1,25 +1,25 @@
 package com.mishura.model;
 
-
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
-//@Entity
-public enum Subject {
-    MATHEMATICS,
-    PHYSICS,
-    CHEMISTRY,
-    BIOLOGY,
-    PHILOSOPHY,
-    ENGLISH,
-    HISTORY;
+@Getter
+@Setter
+@ToString
+@Entity
+public class Subject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    private String id;
+    private String name;
 
-    @OneToOne
-    private Teacher teacher;
+    public Subject() {
+    }
+
+    public Subject(String name) {
+        this.name = name;
+    }
 }

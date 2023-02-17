@@ -15,14 +15,19 @@ import java.util.Set;
 @Table(name = "student_group")
 public class Group {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    private String id;
-
     private String name;
 
-    //@OneToMany(mappedBy = "group", cascade = CascadeType.PERSIST)
-    //@ToString.Exclude
-    @Transient
+    @OneToMany(mappedBy = "group",
+            cascade = CascadeType.PERSIST,
+            fetch = FetchType.EAGER)
     private Set<Student> students;
+
+    public Group(){
+
+    }
+
+    public Group(String name, Set<Student> students) {
+        this.name = name;
+        this.students = students;
+    }
 }
