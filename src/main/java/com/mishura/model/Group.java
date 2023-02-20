@@ -18,12 +18,15 @@ public class Group {
     private String name;
 
     @OneToMany(mappedBy = "group",
-            cascade = CascadeType.PERSIST,
-            fetch = FetchType.EAGER)
+            cascade = CascadeType.PERSIST)
     private Set<Student> students;
 
     public Group(){
 
+    }
+
+    public Group(String name) {
+        this.name = name;
     }
 
     public Group(String name, Set<Student> students) {

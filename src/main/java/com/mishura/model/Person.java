@@ -19,7 +19,7 @@ public abstract class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    private String id;
+    protected String id;
 
     @Column(name = "first_name")
     protected String firstName;

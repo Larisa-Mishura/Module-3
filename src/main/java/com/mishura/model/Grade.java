@@ -54,6 +54,9 @@ public class Grade {
         }
 
         public Builder withMark(int mark) {
+            if(mark > 5 || mark < 0){
+                throw new IllegalArgumentException();
+            }
             this.mark = mark;
             return this;
         }
@@ -67,9 +70,7 @@ public class Grade {
             if(subject == null){
                 throw new IllegalArgumentException();
             }
-            if(mark > 10 || mark <= 0){
-                throw new IllegalArgumentException();
-            }
+
             return new Grade(subject, mark, students);
         }
     }

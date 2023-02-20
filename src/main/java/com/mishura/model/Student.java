@@ -46,25 +46,25 @@ public class Student extends Person{
         private Set<Grade> grades;
 
         @Override
-        public Person.Builder withDateOfEntrance(LocalDateTime dateOfEntrance) {
+        public Builder withDateOfEntrance(LocalDateTime dateOfEntrance) {
             this.dateOfEntrance = dateOfEntrance;
             return this;
         }
 
         @Override
-        public Person.Builder withGroup(Group group) {
+        public Builder withGroup(Group group) {
             this.group = group;
             return this;
         }
 
         @Override
-        public Person.Builder withGrades(Set<Grade> grades) {
+        public Builder withGrades(Set<Grade> grades) {
             this.grades = grades;
             return this;
         }
 
         @Override
-        public Person build() {
+        public Student build() {
             return new Student(id, firstName, lastName, age, dateOfEntrance, group, grades);
         }
     }

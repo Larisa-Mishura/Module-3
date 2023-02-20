@@ -34,13 +34,13 @@ public class Teacher extends Person{
         private Subject subject;
 
         @Override
-        public Person.Builder withSubject(Subject subject) {
+        public Builder withSubject(Subject subject) {
             this.subject = subject;
             return this;
         }
 
         @Override
-        public Person build() {
+        public Teacher build() {
             return new Teacher(id, firstName, lastName, age, subject);
         }
     }
