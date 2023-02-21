@@ -22,5 +22,5 @@ insert into "student" (id, first_name, last_name, age, date_of_entrance, group_i
 insert into "student" (id, first_name, last_name, age, date_of_entrance, group_id) values ('c9580f64-8a6e-48d0-a2fb-8f1f84d90158', 'Dmytro', 'Dmytrenko',  22, '2022-09-11  07:00:00','ZZZ-22');
 insert into "student" (id, first_name, last_name, age, date_of_entrance, group_id) values ('d3457bfe-8151-4a99-81c2-db62a57281b3', 'Olena', 'Zinkevich',  23, '2022-09-11  07:00:00','ZZZ-22');
 insert into "student" (id, first_name, last_name, age, date_of_entrance, group_id) values ('e6789db5-541c-48b3-95e2-555df1cf95a5', 'Natalia', 'Naumenko',  24, '2022-09-11  07:00:00','ZZZ-22');
-insert into "student" (id, first_name, last_name, age, date_of_entrance, group_id) values ('e92e5766-95d9-4958-a06b-a49c95993efc', 'Lina', 'Rachkeluk',  27, '2022-09-11  07:00:00','ZZZ-22');
+insert into "student" (id, first_name, last_name, age, date_of_entrance, group_id) values ('e92e5766-95d9-4958-a06b-a49c95993efc', 'Katerina', 'Nagoga',  27, '2022-09-11  07:00:00','ZZZ-22');
 insert into "student" (id, first_name, last_name, age, date_of_entrance, group_id) values ('ea756a43-3f23-4490-a4b6-35f3dca82e58', 'Sergiy', 'Harchenko',  20, '2022-09-11  07:00:00','ZZZ-22');

@@ -102,4 +102,16 @@ public class StudentService implements SearchService{
         StudentRepository.getInstance().getBestSubject();
     }
 
+    public void getAverageGradeInGroup() {
+        StudentRepository.getInstance().getAverageGradeInGroup();
+    }
+
+    public void getBestGradesSubject() {
+        StudentRepository.getInstance().getBestGradesSubject();
+    }
+
+    public void getStudentsByGrade(double grade) {
+        StudentRepository.getInstance().getStudentsByGrade(grade);
+    }
+
 }

@@ -17,7 +17,7 @@ public class Grade {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    private String id;
+    private String gradeId;
 
     @OneToOne(cascade = CascadeType.PERSIST)
     @OnDelete(action = OnDeleteAction.CASCADE)

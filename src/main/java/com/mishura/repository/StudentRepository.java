@@ -36,7 +36,32 @@ public class StudentRepository implements SearchableRepository, GeneralRepositor
         getSql("SELECT group_id, count(*) FROM student GROUP BY group_id");
     }
 
-    public void getBestSubject() {
-        getSql("SELECT * FROM student s LEFT JOIN student_grade g ON s.id = g.student_id");//  LEFT JOIN grade ON g.grade_id = grade.id)") ;
+    public void getStudentsGrades() {
+        getSql("SELECT id, first_name, last_name, group_id, mark, subject_name FROM ( (student s LEFT JOIN student_grade g ON s.id = g.student_id) LEFT JOIN grade m ON g.grade_id = m.gradeId)") ;
     }
+
+    public void getBestSubject() {
+        getSql("SELECT id, first_name, last_name, group_id, mark, subject_name FROM ( (student s LEFT JOIN student_grade g ON s.id = g.student_id) LEFT JOIN grade m ON g.grade_id = m.gradeId)") ;
+    }
+
+    public void getAverageGradeInGroup(){
+        getSql("SELECT group_id, AVG(mark) " +
+                "FROM ( (student s LEFT JOIN student_grade g ON s.id = g.student_id) LEFT JOIN grade m ON g.grade_id = m.gradeId) GROUP BY group_id") ;
+    }
+
+    public void getBestGradesSubject(){
+        getSql("SELECT subject_name, AVG(mark) " +
+                "FROM ( (student s LEFT JOIN student_grade g ON s.id = g.student_id) " +
+                "LEFT JOIN grade m ON g.grade_id = m.gradeId) " +
+                "GROUP BY subject_name") ;
+    }
+
+    public void getStudentsByGrade(double grade){
+        getSql("SELECT id, first_name, last_name,  AVG(mark)" +
+                "FROM ( (student s LEFT JOIN student_grade g ON s.id = g.student_id) " +
+                "LEFT JOIN grade m ON g.grade_id = m.gradeId) " +
+                "GROUP BY id " +
+                "HAVING AVG(mark) > " + String.valueOf(grade)) ;
+    }
+
 }

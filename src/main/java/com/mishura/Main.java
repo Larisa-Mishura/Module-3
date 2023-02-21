@@ -50,13 +50,17 @@ public class Main {
         StudentService studentService = StudentService.getInstance(StudentRepository.getInstance());
         GroupService groupService = GroupService.getInstance();
 
-        Group group1 = groupService.create(10);
+        /*Group group1 = groupService.create(10);
         Group group2 = groupService.create(15);
-        Group group3 = groupService.create(12);
+        Group group3 = groupService.create(12);*/
 
         studentService.getGroupSizes();
 
-        studentService.getBestSubject();
+        studentService.getAverageGradeInGroup();
+
+        studentService.getBestGradesSubject();
+
+        studentService.getStudentsByGrade(4.5);
 
 
         /*final Student.Builder builder = new Student.Builder();
