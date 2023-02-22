@@ -1,14 +1,6 @@
 package com.mishura.repository;
 
-import com.mishura.model.Subject;
-import com.mishura.util.HibernateUtil;
-
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import java.util.Arrays;
-import java.util.List;
-
-public class SubjectRepository implements GeneralRepository<Subject> {
+public class SubjectRepository implements GeneralRepository {
 
     private static SubjectRepository instance;
 
@@ -22,9 +14,7 @@ public class SubjectRepository implements GeneralRepository<Subject> {
         return instance;
     }
 
-
     public void getBestGradesSubject(){
-
         getSql("SELECT subject_name, AVG(mark) AS average_grade " +
                 "FROM " + STUDENTS_GROUPS_GRADES_SUBJECTS +
                 "GROUP BY subject_name");
@@ -35,6 +25,5 @@ public class SubjectRepository implements GeneralRepository<Subject> {
                 "FROM " + STUDENTS_GROUPS_GRADES_SUBJECTS +
                 "GROUP BY subject_name");
     }
-
 
 }

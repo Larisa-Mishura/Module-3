@@ -1,13 +1,29 @@
 package com.mishura.service;
 
-import com.mishura.repository.GradeRepository;
-import com.mishura.repository.SearchableRepository;
-import com.mishura.repository.StudentRepository;
-import com.mishura.repository.SubjectRepository;
+import com.mishura.repository.*;
 
 public class UniversityService {
+
+    private static UniversityService instance;
+
+    private final StudentRepository studentRepository;
+    private final SubjectRepository subjectRepository;
+
+
+    public UniversityService(StudentRepository studentRepository, SubjectRepository subjectRepository) {
+        this.studentRepository = studentRepository;
+        this.subjectRepository = subjectRepository;
+    }
+
+    public static UniversityService getInstance() {
+        if (instance == null) {
+            instance = new UniversityService(StudentRepository.getInstance(), SubjectRepository.getInstance());
+        }
+        return instance;
+    }
+
     public void getAverageGradeInGroup() {
-        GradeRepository.getInstance().getAverageGradeInGroup();
+        studentRepository.getAverageGradeInGroup();
     }
 
     public void getByFieldName(String field, String fieldName, SearchableRepository searchableRepository) {
@@ -15,18 +31,18 @@ public class UniversityService {
     }
 
     public void getGroupSizes() {
-        StudentRepository.getInstance().getGroupSizes();
+        studentRepository.getGroupSizes();
     }
 
     public void getStudentsByGrade(double grade) {
-        StudentRepository.getInstance().getStudentsByGrade(grade);
+        studentRepository.getStudentsByGrade(grade);
     }
 
     public void getBestGradesSubject() {
-        SubjectRepository.getInstance().getBestGradesSubject();
+        subjectRepository.getBestGradesSubject();
     }
 
     public void getWorstGradesSubject() {
-        SubjectRepository.getInstance().getWorstGradesSubject();
+        subjectRepository.getWorstGradesSubject();
     }
 }

@@ -1,8 +1,6 @@
 package com.mishura.repository;
 
-import com.mishura.model.Grade;
-
-public class GradeRepository implements GeneralRepository<Grade> {
+public class GradeRepository{
 
     private static GradeRepository instance;
 
@@ -14,11 +12,5 @@ public class GradeRepository implements GeneralRepository<Grade> {
             instance = new GradeRepository();
         }
         return instance;
-    }
-
-    public void getAverageGradeInGroup(){
-        getSql("SELECT group_id, AVG(mark) " +
-                "FROM " + STUDENTS_GROUPS_GRADES_SUBJECTS +
-                "GROUP BY group_id") ;
     }
 }

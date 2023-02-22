@@ -2,7 +2,6 @@ package com.mishura.action;
 
 import com.mishura.model.Group;
 import com.mishura.model.Student;
-import com.mishura.service.StudentService;
 import com.mishura.util.UserInput;
 
 import java.time.LocalDate;
@@ -10,8 +9,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class CreateStudentAction implements Action{
-
-    StudentService studentService = StudentService.getInstance();
 
     @Override
     public void execute() {
@@ -38,12 +35,5 @@ public class CreateStudentAction implements Action{
                 .build();
 
         System.out.println(student.toString());
-
-        final String[] menuForSaving = {"Yes", "No"};
-        final int userChoiceForSaving = UserInput.menu(menuForSaving, "Do you want to save information to the database?");
-
-        if(userChoiceForSaving == 0){
-            studentService.save(student);
-        }
     }
 }

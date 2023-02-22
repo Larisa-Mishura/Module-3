@@ -12,7 +12,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@ToString
 @MappedSuperclass
 public abstract class Person {
 

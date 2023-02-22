@@ -1,8 +1,6 @@
 package com.mishura.repository;
 
-import com.mishura.model.Student;
-
-public class StudentRepository implements SearchableRepository, GeneralRepository<Student>{
+public class StudentRepository implements SearchableRepository, GeneralRepository{
 
     private static StudentRepository instance;
 
@@ -24,20 +22,10 @@ public class StudentRepository implements SearchableRepository, GeneralRepositor
         getSql("SELECT group_id, count(*) FROM student GROUP BY group_id");
     }
 
-
-
-    public void getStudentsGrades() {
+    public void getStudentsGrades() { // не требуется, но для проверки очень нужен )
         getSql("SELECT id, first_name, last_name, group_id, mark, subject_name " +
                 "FROM " + STUDENTS_GROUPS_GRADES_SUBJECTS);
     }
-
-    public void getBestSubject() {
-        getSql("SELECT id, first_name, last_name, group_id, mark, subject_name " +
-                "FROM " + STUDENTS_GROUPS_GRADES_SUBJECTS);
-    }
-
-
-
 
     public void getStudentsByGrade(double grade){
         getSql("SELECT id, first_name, last_name,  AVG(mark)" +
@@ -46,7 +34,9 @@ public class StudentRepository implements SearchableRepository, GeneralRepositor
                 "HAVING AVG(mark) > " + String.valueOf(grade)) ;
     }
 
-
-
-
+    public void getAverageGradeInGroup(){
+        getSql("SELECT group_id, AVG(mark) " +
+                "FROM " + STUDENTS_GROUPS_GRADES_SUBJECTS +
+                "GROUP BY group_id") ;
+    }
 }

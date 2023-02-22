@@ -1,8 +1,6 @@
 package com.mishura.repository;
 
-import com.mishura.model.Teacher;
-
-public class TeacherRepository implements SearchableRepository, GeneralRepository<Teacher> {
+public class TeacherRepository implements SearchableRepository, GeneralRepository{
 
     private static TeacherRepository instance;
 
@@ -19,5 +17,4 @@ public class TeacherRepository implements SearchableRepository, GeneralRepositor
     public void getByFieldName(String field, String fieldName) {
         getSql("SELECT * FROM teacher WHERE " + field + " LIKE '" + fieldName + "'");
     }
-
 }

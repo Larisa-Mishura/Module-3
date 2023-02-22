@@ -2,16 +2,14 @@ package com.mishura.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 @Setter
 @Getter
-@ToString
 @Entity
 public class Student extends Person{
 
@@ -28,8 +26,10 @@ public class Student extends Person{
             inverseJoinColumns = @JoinColumn(name = "grade_id"))
     private Set<Grade> grades;
 
+    @Transient
+    DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("MM/dd/yyyy 'at' hh:mm a");
+
     public Student(){
-        super();
     }
 
     public Student(String id, String firstName, String lastName, int age, LocalDateTime dateOfEntrance, Group group, Set<Grade> grades) {
@@ -67,5 +67,17 @@ public class Student extends Person{
         public Student build() {
             return new Student(id, firstName, lastName, age, dateOfEntrance, group, grades);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", dateOfEntrance=" + FORMATTER.format(dateOfEntrance) +//format(DateTimeFormatter.ofPattern("yyyy.mm.dd")) +
+                ", group=" + group.getName() +
+                '}';
     }
 }

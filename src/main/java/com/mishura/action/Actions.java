@@ -9,7 +9,7 @@ public enum Actions {
     AMOUNT_STUDENTS_IN_GROUP ("The total amount of students in every group", new GroupSizeAction()),
     AVERAGE_GRADE_FOR_GROUP ("Show average grade for groups", new AverageGradeForGroupAction()),
     SUBJECT_STATISTICS ("Show subject with best / worst grades",  new SubjectStatistics()),
-    STUDENTS_WITH_AVERAGE_GRADE ("Show students with average grad", new StudentsWithAverageGrade()),
+    STUDENTS_WITH_AVERAGE_GRADE ("Show students with average grade", new StudentsWithAverageGrade()),
     CREATE ("Create", new CreateStudentAction()),
     EXIT ("Finish program", new ExitAction());
 
