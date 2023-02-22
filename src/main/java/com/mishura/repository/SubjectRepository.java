@@ -15,13 +15,13 @@ public class SubjectRepository implements GeneralRepository {
     }
 
     public void getBestGradesSubject(){
-        getSql("SELECT subject_name, AVG(mark) AS average_grade " +
+        getSql("SELECT subject_name, AVG(mark)" +
                 "FROM " + STUDENTS_GROUPS_GRADES_SUBJECTS +
                 "GROUP BY subject_name");
     }
 
     public void getWorstGradesSubject(){
-        getSql("SELECT subject_name, AVG(mark) AS average_grade " +
+        getSql("SELECT subject_name, AVG(mark)" +
                 "FROM " + STUDENTS_GROUPS_GRADES_SUBJECTS +
                 "GROUP BY subject_name");
     }
