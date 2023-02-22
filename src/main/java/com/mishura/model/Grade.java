@@ -20,7 +20,6 @@ public class Grade {
     private String gradeId;
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Subject subject;
 
     private int mark;

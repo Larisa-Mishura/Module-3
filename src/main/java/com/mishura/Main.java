@@ -7,9 +7,7 @@ import com.mishura.model.Teacher;
 import com.mishura.repository.GeneralRepository;
 import com.mishura.repository.StudentRepository;
 import com.mishura.repository.TeacherRepository;
-import com.mishura.service.GroupService;
-import com.mishura.service.SearchService;
-import com.mishura.service.StudentService;
+import com.mishura.service.*;
 import com.mishura.util.HibernateUtil;
 import com.mishura.util.UserInput;
 import org.apache.log4j.PropertyConfigurator;
@@ -39,28 +37,30 @@ public class Main {
         PropertyConfigurator.configure("src/main/resources/log4j.properties");
 
 
-        /*final Actions[] values = Actions.values();
+        final Actions[] values = Actions.values();
         final String[] names = Actions.mapActionsToNames(values);
 
         while (true) {
             final int userChoice = UserInput.menu(names, "Write what you want to do");
             values[userChoice].execute();
-        }*/
+        }
 
-        StudentService studentService = StudentService.getInstance(StudentRepository.getInstance());
+        /*StudentService studentService = StudentService.getInstance(StudentRepository.getInstance());
         GroupService groupService = GroupService.getInstance();
+        GradeService gradeService = GradeService.getInstance();
+        SubjectService subjectService = SubjectService.getInstance();
 
-        /*Group group1 = groupService.create(10);
+        *//*Group group1 = groupService.create(10);
         Group group2 = groupService.create(15);
-        Group group3 = groupService.create(12);*/
+        Group group3 = groupService.create(12);*//*
 
         studentService.getGroupSizes();
 
-        studentService.getAverageGradeInGroup();
+        gradeService.getAverageGradeInGroup();
 
-        studentService.getBestGradesSubject();
+        subjectService.getBestGradesSubject();
 
-        studentService.getStudentsByGrade(4.5);
+        studentService.getStudentsByGrade(4.5);*/
 
 
         /*final Student.Builder builder = new Student.Builder();
@@ -77,6 +77,9 @@ public class Main {
         group.setStudents(set);
 
         studentService.save(student);*/
+
+        //SearchService searchService = GroupService.getInstance();
+        //searchService.getByFieldName("name", "ZZZ-22");
 
     }
 }

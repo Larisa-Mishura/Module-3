@@ -2,10 +2,15 @@ package com.mishura.util;
 
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class UserInput {
     public static final BufferedReader READER = new BufferedReader(new InputStreamReader(System.in));
@@ -27,7 +32,6 @@ public class UserInput {
             userChoice = Integer.parseInt(line);
         } while (userChoice < 0 || userChoice > names.length);
         LOGGER.info("User choice: " + userChoice);
-        //System.out.println("User choice: " + userChoice);  TODO
         return userChoice;
     }
 
@@ -39,13 +43,47 @@ public class UserInput {
             line = READER.readLine();
 
         } while (!StringUtils.isNumeric(line));
+        LOGGER.info("User input: " + line);
         return Integer.parseInt(line);
+    }
+
+    @SneakyThrows
+    public static double getDouble(final String option){
+        String line;
+        do{
+            System.out.println(option);
+            line = READER.readLine();
+
+        } while (!NumberUtils.isCreatable(line));
+        LOGGER.info("User input: " + line);
+        return Double.parseDouble(line);
     }
 
     @SneakyThrows
     public static String getString(final String message){
         System.out.println(message);
-        return READER.readLine();
+        String line = READER.readLine();
+        LOGGER.info("User input: " + line);
+        return line;
+    }
+
+
+    @SneakyThrows
+    public static LocalDateTime getDateAngTime() {
+        LocalDateTime date = null;
+        try{
+            date = LocalDateTime.of(
+                    UserInput.getInt("Enter year"),
+                    UserInput.getInt("Enter month"),
+                    UserInput.getInt("Enter day of month"),
+                    UserInput.getInt("Enter hour"),
+                    UserInput.getInt("Enter minute"));
+            LOGGER.info("User input: " + date);
+        } catch (DateTimeException e){
+            System.out.println("Invalid value for date.");
+            getDateAngTime();
+        }
+        return date;
     }
 }
 
